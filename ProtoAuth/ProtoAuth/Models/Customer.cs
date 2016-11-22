@@ -10,10 +10,12 @@ namespace ProtoAuth.Models
     public class Customer
     {
         [Key]
-        public Guid Id { get; set; }
-        [ForeignKey("Enterprise")]
-        public Guid EnterpriseID { get; set; }
+        public Guid Id { get; set; } 
+        public Guid EnterpriseId { get; set; }
+        [ForeignKey("EnterpriseId")]
+        public Enterprise Enterprise { get; set; }
         public int CID { get; set; }
         public string Name { get; set; }
+        public ICollection<ServiceOrder> ServiceOrders { get; set; }
     }
 }

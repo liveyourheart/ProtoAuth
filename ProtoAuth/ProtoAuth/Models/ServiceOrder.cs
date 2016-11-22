@@ -11,7 +11,9 @@ namespace ProtoAuth.Models
         public Guid Id { get; set; }
         public int ServiceOrderNumber { get; set; }
         public string Description { get; set; }
-        [ForeignKey("Customer")]
         public Guid CustomerId { get; set; }
+        [ForeignKey("CustomerId")]
+        public Customer Customer { get; set; }
+        
     }
 }

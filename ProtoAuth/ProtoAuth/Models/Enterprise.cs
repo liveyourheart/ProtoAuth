@@ -10,5 +10,7 @@ namespace ProtoAuth.Models
         public Guid Id { get; set; }
         public int EnterpriseNumber { get; set; }
         public string Name { get; set; }
+
+        public ICollection<Customer> Customers { get; set; }
     }
 }
