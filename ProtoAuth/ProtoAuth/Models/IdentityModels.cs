@@ -39,5 +39,7 @@ namespace ProtoAuth.Models
         public System.Data.Entity.DbSet<ProtoAuth.Models.ServiceOrder> ServiceOrders { get; set; }
 
         public System.Data.Entity.DbSet<ProtoAuth.Models.Customer> Customers { get; set; }
+
+        public System.Data.Entity.DbSet<ProtoAuth.Models.Enrollment> Enrollments { get; set; }
     }
 }
