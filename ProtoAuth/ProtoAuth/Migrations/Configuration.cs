@@ -25,12 +25,32 @@ namespace ProtoAuth.Migrations
             );
             context.ClientUsers.AddOrUpdate(
                 c => c.Id,
-                new ClientUser() { Id = Guid.NewGuid(), UserName = "mmchughes@mtmrecognition.com", UnhashedPassword = "password", TrendsRoleId = 1 }
+                new ClientUser() { Id = new Guid("B7CE9BC0-10C8-4299-B631-D142772C7436"), UserName = "mmchughes@mtmrecognition.com", UnhashedPassword = "password", TrendsRoleId = 1 },
+                new ClientUser() { Id = new Guid("5A18923B-7027-4664-8A5C-8ABC3FA59D9C"), UserName = "client@mtmrecognition.com", UnhashedPassword = "password", TrendsRoleId = 2 },
+                new ClientUser() { Id = new Guid("F4698909-3F7F-4F97-8E55-FA49B2A6C74C"), UserName = "customer@mtmrecognition.com", UnhashedPassword = "password", TrendsRoleId = 3 },
+                new ClientUser() { Id = new Guid("D10FF4AD-CA69-4C8F-802E-CFAB9500E9DC"), UserName = "program@mtmrecognition.com", UnhashedPassword = "password", TrendsRoleId = 4 }
                 );
             context.Enterprises.AddOrUpdate(
                 e => e.Id,
-                    new Enterprise() { Id = Guid.NewGuid(), EnterpriseNumber = 1234567, Name = "Starship Enterprise" }
+                new Enterprise() { Id = new Guid("0121E718-7302-492D-BCCB-7445F9A7679D"), EnterpriseNumber = 1234567, Name = "Starship Enterprise" }
                 );
+            context.Customers.AddOrUpdate(
+                s => s.Id,
+                new Customer() { Id = new Guid("45D64E0C-A76B-4679-8682-D5D6052D9045"), Name = "Customer One", CID = 1234567, EnterpriseId = new Guid("0121E718-7302-492D-BCCB-7445F9A7679D")},
+                new Customer() { Id = new Guid("6BA276F7-3BEC-445A-AD06-E06ECBD1599B"), Name = "Customer Two", CID = 7654321, EnterpriseId = new Guid("0121E718-7302-492D-BCCB-7445F9A7679D") },
+                new Customer() { Id = new Guid("37DC8443-90A0-4CCB-A13E-58F7BED17D29"), Name = "Customer Three", CID = 123654, EnterpriseId = new Guid("0121E718-7302-492D-BCCB-7445F9A7679D") }
+                );
+            context.ServiceOrders.AddOrUpdate(
+                s => s.Id,
+                new ServiceOrder() { Id = new Guid("131F4786-3AD3-4A2E-96E9-5836AD773B79"), ServiceOrderNumber = 123456, Description = "Service Order One", CustomerId = new Guid("45D64E0C-A76B-4679-8682-D5D6052D9045")},
+                new ServiceOrder() { Id = new Guid("8F57E63A-CA9E-475A-9908-FDA164145957"), ServiceOrderNumber = 234567, Description = "Service Order Two", CustomerId = new Guid("45D64E0C-A76B-4679-8682-D5D6052D9045") },
+                new ServiceOrder() { Id = new Guid("C7D97590-4D65-4B01-BC7F-C257D24791D0"), ServiceOrderNumber = 654321, Description = "Service Order Three", CustomerId = new Guid("45D64E0C-A76B-4679-8682-D5D6052D9045") },
+                new ServiceOrder() { Id = new Guid("8E23DA39-74DF-4D6C-B39C-2B5304AE11F4"), ServiceOrderNumber = 123123, Description = "Service Order Four", CustomerId = new Guid("6BA276F7-3BEC-445A-AD06-E06ECBD1599B") },
+                new ServiceOrder() { Id = new Guid("AC60DF53-83AD-498F-ABDF-7E9C012FAEED"), ServiceOrderNumber = 222222, Description = "Service Order Five", CustomerId = new Guid("6BA276F7-3BEC-445A-AD06-E06ECBD1599B") },
+                new ServiceOrder() { Id = new Guid("E53F5E86-29E6-4962-B275-0BE026E91EE3"), ServiceOrderNumber = 234234, Description = "Service Order Six", CustomerId = new Guid("37DC8443-90A0-4CCB-A13E-58F7BED17D29") }
+
+                );
+            
         }
     }
 }
