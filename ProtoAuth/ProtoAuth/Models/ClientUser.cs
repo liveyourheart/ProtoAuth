@@ -15,6 +15,11 @@ namespace ProtoAuth.Models
 
         public string UnhashedPassword { get; set; }
         public int TrendsRoleId { get; set; }
-        public ICollection<Enrollment> Enrollments { get; set; }
+        public List<Enrollment> Enrollments { get; set; }
+
+        public ClientUser()
+        {
+            Enrollments = new List<Enrollment>();
+        }
     }
 }

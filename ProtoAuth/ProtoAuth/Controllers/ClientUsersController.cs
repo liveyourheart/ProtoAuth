@@ -24,7 +24,7 @@ namespace ProtoAuth.Controllers
         }
 
         // GET: api/ClientUsers/5
-        [ResponseType(typeof(ClientUser))]
+        [ResponseType(typeof(ClientUserDTO))]
         public async Task<IHttpActionResult> GetClientUser(Guid id)
         {
             ClientUser clientUser = await db.ClientUsers.FindAsync(id);
@@ -32,8 +32,51 @@ namespace ProtoAuth.Controllers
             {
                 return NotFound();
             }
+            clientUser.Enrollments =
+            (from enrollment in db.Enrollments
+            where enrollment.ClientUserId == clientUser.Id
+            select enrollment).ToList();
 
-            return Ok(clientUser);
+            var client = new ClientUserDTO();
+
+            client.Id = clientUser.Id;
+            client.UserName = clientUser.UserName;
+            client.TrendsRoleId = clientUser.TrendsRoleId;
+
+            if (clientUser.Enrollments.Count > 0)
+            {
+                var firstEnt = clientUser.Enrollments[0].EnterpriseId;
+                var userEnterprise =
+                    (from enterprise in db.Enterprises
+                    where enterprise.Id == firstEnt
+                    select enterprise).FirstOrDefault();
+                client.EnterpriseNumber = userEnterprise.EnterpriseNumber;
+
+                foreach (var e in clientUser.Enrollments)
+                {
+                    var serviceOrder =
+                        (from so in db.ServiceOrders
+                        where so.Id == e.ServiceOrderId
+                        select so).FirstOrDefault();
+
+                    var customer =
+                        (from c in db.Customers
+                         where c.Id == e.CustomerId
+                         select c).FirstOrDefault();
+
+                    if (serviceOrder != null && !client.ServiceOrders.Contains(serviceOrder.ServiceOrderNumber))
+                    {
+                        client.ServiceOrders.Add(serviceOrder.ServiceOrderNumber);
+                    }
+
+                    if (customer != null && !client.CustomerPrograms.Contains(customer.CID))
+                    {
+                        client.CustomerPrograms.Add(customer.CID);
+                    }
+                }
+            }
+
+            return Ok(client);
         }
 
         // PUT: api/ClientUsers/5

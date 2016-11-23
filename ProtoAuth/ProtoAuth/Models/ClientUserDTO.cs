@@ -8,10 +8,7 @@ namespace ProtoAuth.Models
     public class ClientUserDTO
     {
         public Guid Id { get; set; }
-
-        public string UserName { get; set; }
-
-        public string UnhashedPassword { get; set; }
+        public string UserName { get; set; } 
         public int TrendsRoleId { get; set; }
         public int EnterpriseNumber { get; set; }
         public List<int> CustomerPrograms { get; set; }
