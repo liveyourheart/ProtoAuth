@@ -50,6 +50,58 @@ namespace ProtoAuth.Migrations
                 new ServiceOrder() { Id = new Guid("E53F5E86-29E6-4962-B275-0BE026E91EE3"), ServiceOrderNumber = 234234, Description = "Service Order Six", CustomerId = new Guid("37DC8443-90A0-4CCB-A13E-58F7BED17D29") }
 
                 );
+            context.Enrollments.AddOrUpdate(
+                e => e.EnterpriseId,
+               
+                new Enrollment()
+                {
+                    Id = new Guid("89D4438A-F2C0-4BBF-9CA4-C72E27BF1FFE"),
+                    ClientUserId = new Guid("B7CE9BC0-10C8-4299-B631-D142772C7436"),
+                    EnterpriseId = new Guid("0121E718-7302-492D-BCCB-7445F9A7679D"),
+                    CustomerId = new Guid("45D64E0C-A76B-4679-8682-D5D6052D9045"),
+                    ServiceOrderId = new Guid("131F4786-3AD3-4A2E-96E9-5836AD773B79")
+                },
+                new Enrollment()
+                {
+                    Id = new Guid("04727861-FD40-487C-BC5E-F2624C6D83D4"),
+                    ClientUserId = new Guid("B7CE9BC0-10C8-4299-B631-D142772C7436"),
+                    EnterpriseId = new Guid("0121E718-7302-492D-BCCB-7445F9A7679D"),
+                    CustomerId = new Guid("45D64E0C-A76B-4679-8682-D5D6052D9045"),
+                    ServiceOrderId = new Guid("8F57E63A-CA9E-475A-9908-FDA164145957")
+                },
+                new Enrollment()
+                {
+                    Id = new Guid("12742348-CA36-4E81-B244-0F50A936A97F"),
+                    ClientUserId = new Guid("B7CE9BC0-10C8-4299-B631-D142772C7436"),
+                    EnterpriseId = new Guid("0121E718-7302-492D-BCCB-7445F9A7679D"),
+                    CustomerId = new Guid("45D64E0C-A76B-4679-8682-D5D6052D9045"),
+                    ServiceOrderId = new Guid("C7D97590-4D65-4B01-BC7F-C257D24791D0")
+                },
+                new Enrollment()
+                {
+                    Id = new Guid("D726332B-6A12-48A9-B680-6B4AB522209C"),
+                    ClientUserId = new Guid("B7CE9BC0-10C8-4299-B631-D142772C7436"),
+                    EnterpriseId = new Guid("0121E718-7302-492D-BCCB-7445F9A7679D"),
+                    CustomerId = new Guid("6BA276F7-3BEC-445A-AD06-E06ECBD1599B"),
+                    ServiceOrderId = new Guid("8E23DA39-74DF-4D6C-B39C-2B5304AE11F4")
+                },
+                new Enrollment()
+                {
+                    Id = new Guid("3A72EDEA-AD7E-4F83-9267-1772F1B28B0A"),
+                    ClientUserId = new Guid("B7CE9BC0-10C8-4299-B631-D142772C7436"),
+                    EnterpriseId = new Guid("0121E718-7302-492D-BCCB-7445F9A7679D"),
+                    CustomerId = new Guid("6BA276F7-3BEC-445A-AD06-E06ECBD1599B"),
+                    ServiceOrderId = new Guid("AC60DF53-83AD-498F-ABDF-7E9C012FAEED")
+                },
+                new Enrollment()
+                {
+                    Id = new Guid("76654581-1EE8-4A89-BEBD-D0F2A79210BF"),
+                    ClientUserId = new Guid("B7CE9BC0-10C8-4299-B631-D142772C7436"),
+                    EnterpriseId = new Guid("0121E718-7302-492D-BCCB-7445F9A7679D"),
+                    CustomerId = new Guid("37DC8443-90A0-4CCB-A13E-58F7BED17D29"),
+                    ServiceOrderId = new Guid("E53F5E86-29E6-4962-B275-0BE026E91EE3")
+                }
+                );
             
         }
     }
